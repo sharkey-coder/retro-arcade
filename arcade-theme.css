@@ -1,0 +1,318 @@
+/**
+ * Arcade 8-Bit Theme Stylesheet
+ * 
+ * This file contains CSS variables and base styles for maintaining
+ * consistent 8-bit retro arcade aesthetics across all games.
+ * 
+ * Usage: Include this file in your HTML:
+ * <link rel="stylesheet" href="arcade-theme.css">
+ */
+
+:root {
+    /* ============================================
+       BACKGROUND COLORS
+       ============================================ */
+    --bg-primary: #1a1c2c;        /* Main page background */
+    --bg-panel: #222034;          /* Panel/sidebar background */
+    --bg-canvas: #25233a;         /* Game canvas background */
+    --bg-black: #000;             /* Pure black */
+    --bg-overlay: #000e;          /* Semi-transparent overlay */
+    --bg-score-display: #000c;    /* Score display background */
+    
+    /* ============================================
+       TEXT COLORS
+       ============================================ */
+    --text-primary: #fff;         /* Main text color (white) */
+    --text-heading: #ffec27;      /* Headings and titles */
+    --text-score: #72ecff;        /* Score/stat values */
+    --text-controls: #8cfcc6;     /* Control hints and secondary text */
+    --text-disabled: #444;        /* Disabled text */
+    --text-gray: #888;            /* Gray text */
+    
+    /* ============================================
+       BUTTON COLORS
+       ============================================ */
+    --btn-primary: #ffec27;       /* Primary button background */
+    --btn-primary-hover: #ffd700;  /* Primary button hover state */
+    --btn-shadow: #ffa300;        /* Button shadow color */
+    --btn-disabled: #888;         /* Disabled button background */
+    --btn-text: #1a1c2c;          /* Button text color */
+    
+    /* ============================================
+       BORDER COLORS
+       ============================================ */
+    --border-white: #fff;          /* White borders */
+    --border-black: #000;         /* Black borders */
+    --border-gray: #444;          /* Gray borders */
+    --border-gray-light: #455;    /* Light gray borders */
+    --border-grid: #3a3a50;      /* Grid lines */
+    
+    /* ============================================
+       SHADOW COLORS
+       ============================================ */
+    --shadow-black-light: #000c;   /* Light black shadow (rgba) */
+    --shadow-black-medium: #000a; /* Medium black shadow (rgba) */
+    --shadow-black-dark: #0006;   /* Dark black shadow (rgba) */
+    --shadow-black-full: #000d;   /* Full black shadow (rgba) */
+    --shadow-red: #bb3030;        /* Red shadow for game over */
+    --shadow-gray: #3a3a3a;       /* Gray shadow for text */
+    
+    /* ============================================
+       GAME-SPECIFIC COLORS
+       ============================================ */
+    /* Tetris Piece Colors */
+    --tetromino-i: #800000;       /* Maroon */
+    --tetromino-o: #008080;       /* Teal */
+    --tetromino-t: #ff8c00;       /* Yellow-orange */
+    --tetromino-s: #c2b280;       /* Sand */
+    --tetromino-z: #6b8e23;       /* Olive green */
+    --tetromino-j: #663399;       /* Royal purple */
+    --tetromino-l: #000080;       /* Navy blue */
+    
+    /* Snake Game Colors */
+    --snake-color: #000000;       /* Snake body */
+    --snake-head-color: #3434FF;  /* Snake head */
+    --food-color: #FAC800;        /* Food color */
+    
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+    --font-primary: 'Press Start 2P', 'Courier New', monospace;
+    --letter-spacing: 1px;
+    
+    /* ============================================
+       EFFECTS
+       ============================================ */
+    --transition-speed: 0.16s;    /* Button transition speed */
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    letter-spacing: var(--letter-spacing);
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+button, .btn {
+    font-family: var(--font-primary);
+    background: var(--btn-primary);
+    color: var(--btn-text);
+    border: 2px solid var(--border-black);
+    padding: 10px 18px;
+    font-size: 11px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background var(--transition-speed), color var(--transition-speed);
+    text-transform: uppercase;
+    box-shadow: 2px 2px 0 var(--btn-shadow), 4px 4px 0 var(--shadow-black-dark);
+}
+
+button:hover, .btn:hover {
+    background: var(--btn-primary-hover);
+}
+
+button:disabled, .btn[disabled] {
+    background: var(--btn-disabled);
+    color: var(--text-disabled);
+    cursor: not-allowed;
+    border-color: var(--border-gray);
+    box-shadow: none;
+}
+
+button:active, .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--btn-shadow), 2px 2px 0 var(--shadow-black-dark);
+}
+
+/* ============================================
+   HEADING STYLES
+   ============================================ */
+
+h1, h2, h3, .title, .menu-title {
+    font-family: var(--font-primary);
+    color: var(--text-heading);
+    text-shadow: 2px 2px 0 var(--border-black), 4px 4px 0 var(--shadow-gray);
+}
+
+/* ============================================
+   MENU BUTTON & OVERLAY
+   ============================================ */
+
+.menu-btn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    font-family: var(--font-primary);
+    background: var(--btn-primary);
+    color: var(--btn-text);
+    border: 2px solid var(--border-black);
+    padding: 8px 14px;
+    font-size: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    z-index: 1000;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 0 var(--btn-shadow), 4px 4px 0 var(--shadow-black-dark);
+    transition: background var(--transition-speed);
+}
+
+.menu-btn:hover {
+    background: var(--btn-primary-hover);
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-overlay.show {
+    display: flex;
+}
+
+.menu-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 40px;
+}
+
+.menu-title {
+    color: var(--text-heading);
+    text-shadow: 2px 2px 0 var(--border-black), 4px 4px 0 var(--shadow-gray);
+    font-size: 24px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.menu-game-button {
+    font-family: var(--font-primary);
+    background: var(--btn-primary);
+    color: var(--btn-text);
+    border: 2px solid var(--border-black);
+    padding: 20px 30px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background var(--transition-speed);
+    text-transform: uppercase;
+    box-shadow: 2px 2px 0 var(--btn-shadow), 4px 4px 0 var(--shadow-black-dark);
+    margin: 15px 0;
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-game-button:hover {
+    background: var(--btn-primary-hover);
+}
+
+.menu-game-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--btn-shadow), 2px 2px 0 var(--shadow-black-dark);
+}
+
+/* ============================================
+   GAME OVER STYLES
+   ============================================ */
+
+.game-over {
+    font-family: var(--font-primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-overlay);
+    padding: 24px 18px;
+    border-radius: 2px;
+    text-align: center;
+    border: 3px solid var(--border-white);
+    display: none;
+    box-shadow: 3px 3px 0 var(--shadow-red), 6px 6px 0 var(--bg-primary);
+    z-index: 10;
+}
+
+.game-over.show {
+    display: block;
+}
+
+.game-over h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--text-heading);
+    text-shadow: 2px 2px 4px var(--shadow-black-light), 0 0 2px var(--text-heading);
+}
+
+.game-over p {
+    font-size: 12px;
+    margin-bottom: 20px;
+    font-family: var(--font-primary);
+}
+
+/* ============================================
+   CANVAS STYLES
+   ============================================ */
+
+canvas {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* ============================================
+   SCORE DISPLAY STYLES
+   ============================================ */
+
+.score-display, .score-item span {
+    color: var(--text-score);
+    text-shadow: 1px 1px 0 var(--shadow-black-light);
+}
+
+/* ============================================
+   CONTROL HINTS STYLES
+   ============================================ */
+
+.controls-hint, .controls p {
+    color: var(--text-controls);
+    text-shadow: 1px 1px 0 var(--shadow-black-full);
+    font-family: var(--font-primary);
+}
+
+/* ============================================
+   PANEL STYLES
+   ============================================ */
+
+.panel, .score-panel, .controls, .hold-panel {
+    background: var(--bg-panel);
+    border: 3px solid var(--border-white);
+    border-radius: 4px;
+    box-shadow: 0 0 0 3px var(--shadow-black-light), 0 3px 12px var(--shadow-black-medium);
+}
+

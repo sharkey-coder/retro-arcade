@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Games Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../arcade-theme.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .menu-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+        }
+        
+        .title {
+            font-size: 24px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .game-button {
+            padding: 20px 30px;
+            font-size: 16px;
+            margin: 15px 0;
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .subtitle {
+            font-size: 10px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h1 class="title">🎮 RETRO GAMES</h1>
+        <button class="game-button" onclick="window.location.href='../game-files/snake.html'">🐍 Snake</button>
+        <button class="game-button" onclick="window.location.href='../game-files/tetris.html'">🧩 Tetris</button>
+        <button class="game-button" onclick="window.location.href='../game-files/solitaire.html'">🃏 Solitaire</button>
+        <p class="subtitle">Select a game to begin</p>
+    </div>
+</body>
+</html>

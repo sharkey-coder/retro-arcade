@@ -1,0 +1,45 @@
+## Arcade Theme Consistency Rule
+
+All files MUST follow the 8-bit retro arcade theme specified in `arcade-theme.css`. Follow these guidelines:
+
+### CSS/HTML Files:
+1. **Always include `arcade-theme.css`** in HTML files: `<link rel="stylesheet" href="arcade-theme.css">`
+2. **Use CSS variables** from `arcade-theme.css` instead of hardcoded colors:
+   - Backgrounds: `var(--bg-primary)`, `var(--bg-panel)`, `var(--bg-canvas)`, etc.
+   - Text: `var(--text-primary)`, `var(--text-heading)`, `var(--text-score)`, etc.
+   - Buttons: `var(--btn-primary)`, `var(--btn-primary-hover)`, etc.
+   - Borders: `var(--border-white)`, `var(--border-black)`, etc.
+   - Shadows: `var(--shadow-black-light)`, `var(--shadow-black-medium)`, etc.
+3. **Use predefined classes** when available (`.btn`, `.menu-btn`, `.game-over`, `.score-display`, `.panel`, etc.)
+4. **Font**: Always use `var(--font-primary)` which is `'Press Start 2P', 'Courier New', monospace`
+5. **Button styling**: Use the standard button styles with proper shadows, borders, and transitions
+6. **Game colors**: Use game-specific CSS variables (e.g., `var(--snake-color)`, `var(--food-color)`, `var(--tetromino-i)`, etc.)
+
+### JavaScript Files:
+1. **When setting colors dynamically**, use CSS variable values or reference the theme variables
+2. **Canvas rendering**: Ensure pixelated rendering is applied (`image-rendering: pixelated`)
+3. **Maintain 8-bit aesthetic** in all visual elements
+
+### Screen Layout Standards:
+1. **All games must fit on one screen** without requiring scrolling on standard resolutions (1920x1080 or larger)
+2. **Body styling**: Use `height: 100vh; overflow: hidden;` to prevent page scrolling
+3. **Game container**: Should use flexbox to center content and fit within viewport
+4. **Canvas sizing**: 
+   - Canvas should have a maximum height constraint (e.g., `max-height: calc(100vh - 200px)`)
+   - Use responsive sizing: `max-width: 100%; max-height: 90vh;`
+   - Ensure canvas + UI elements fit within 100vh
+5. **Layout approach**:
+   - Use flexbox with `flex-direction: column` for vertical layouts
+   - Use flexbox with `flex-direction: row` for horizontal layouts (with sidebar)
+   - Game area should take remaining space: `flex: 1; min-height: 0;`
+   - Score panels and controls should be compact and fit above/below or beside canvas
+6. **Sidebar/panels**: If used, should be sized appropriately to fit alongside canvas without overflow
+
+### General Rules:
+- Never hardcode colors that are defined in `arcade-theme.css`
+- Maintain consistent spacing, borders (3px white borders), and shadows
+- All text should use the arcade font family
+- Buttons must have the characteristic yellow background (`--btn-primary`) with black borders and shadows
+- Panels/sidebars should use `--bg-panel` background with 3px white borders
+- Game over screens should use the `.game-over` class styling
+- All games must be fully playable without scrolling the page
