@@ -54,6 +54,23 @@
         <button class="game-button" onclick="window.location.href='game-files/frogger.html'">🐸 Frogger</button>
         <p class="subtitle">Select a game to begin</p>
     </div>
+<!-- High Scores Display -->
+<div id="high-scores"></div>
+
+<script src="high-scores.js"></script>
+
+<script>
+  // Global score tracker
+  score = 0;
+  
+  // Update score during game
+  function updateScore(points) {
+    score += points;
+    if (score > 9999) {
+      addHighScore(prompt("New high score! Enter your name:"), score);
+    }
+  }
+</script>
 </body>
 </html>
 
